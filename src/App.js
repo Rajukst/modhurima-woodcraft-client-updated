@@ -4,30 +4,45 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainHome from "./WebPages/Home/Home-Main/MainHome";
 import Footer from "./WebPages/Footer/Footer";
 import Products from "./WebPages/Home/Products/Products";
-import { Placeholder } from "react-bootstrap";
+
 import PlaceOrder from "./WebPages/PlaceOrder/PlaceOrder";
+import DashBoard from "./WebPages/DashBoard/DashBoard";
+import Login from "./WebPages/User-Empliment/Login/Login";
+import Registration from "./WebPages/User-Empliment/Registration/Registration";
+import AuthProvider from "./Context/AuthProvider";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Header></Header>
-        <Switch>
-          <Route exact path="/">
-            <MainHome></MainHome>
-          </Route>
-          <Route path="/home">
-            <MainHome></MainHome>
-          </Route>
-          <Route path="/products">
-            <Products></Products>
-          </Route>
-          <Route path="/place-order">
-            <PlaceOrder></PlaceOrder>
-          </Route>
-        </Switch>
-        <Footer />
-      </Router>
+    <div>
+      <AuthProvider>
+        <Router>
+          <Header></Header>
+          <Switch>
+            <Route exact path="/">
+              <MainHome></MainHome>
+            </Route>
+            <Route path="/home">
+              <MainHome></MainHome>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="/register">
+              <Registration></Registration>
+            </Route>
+            <Route path="/products">
+              <Products></Products>
+            </Route>
+            <Route path="/place-order">
+              <PlaceOrder></PlaceOrder>
+            </Route>
+            <Route path="/dashboard">
+              <DashBoard></DashBoard>
+            </Route>
+          </Switch>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

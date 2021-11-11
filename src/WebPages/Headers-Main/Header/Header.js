@@ -1,9 +1,11 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import TopBanner from "../Top-Banner/TopBanner";
+import useAuth from "../../../Hooks/useAuth";
+
 import "./Header.css";
 const Header = () => {
+  const { user, logOut } = useAuth();
   return (
     <>
       <Navbar bg="dark" expand="lg">
@@ -24,12 +26,17 @@ const Header = () => {
               <Link className="class-link" to="/">
                 About
               </Link>
-              <Link className="class-link" to="/">
-                Login
-              </Link>
-              <Link className="class-link" to="/">
+              <Link className="class-link" to="/dashboard">
                 DashBoard
               </Link>
+              {user.email ? (
+                <Button onClick={logOut}>LogOut</Button>
+              ) : (
+                <Link className="class-link" to="/login">
+                  Login
+                </Link>
+              )}
+              <div className="me-2 text-light">Logged As: {user.email}</div>
             </Nav>
           </Navbar.Collapse>
         </Container>
