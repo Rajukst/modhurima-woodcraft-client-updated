@@ -6,7 +6,7 @@ import HomeProducts from "../Home-Products/HomeProducts";
 const MainHome = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("./Fakedata.json")
+    fetch("http://localhost:5000/home-product")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -14,9 +14,9 @@ const MainHome = () => {
     <div>
       <TopBanner></TopBanner>
       <Row xs={1} md={2} lg={3} className="g-4 m-2">
-        {products.map((getProducts) => (
+        {products.slice(0, 6).map((getProducts) => (
           <HomeProducts
-            key={getProducts.id}
+            key={getProducts._id}
             service={getProducts}
           ></HomeProducts>
         ))}

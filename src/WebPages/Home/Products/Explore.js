@@ -2,8 +2,8 @@ import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const HomeProducts = ({ service }) => {
-  const { name, image, description, price } = service;
+const Explore = ({ exploreProducts }) => {
+  const { name, image, description, price } = exploreProducts;
   return (
     <div>
       <Col>
@@ -23,4 +23,4 @@ const HomeProducts = ({ service }) => {
   );
 };
 
-export default HomeProducts;
+export default Explore;
