@@ -10,7 +10,7 @@ const PlaceOrder = () => {
   const { user } = useAuth();
   const { serviceId } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/place-order/${serviceId}`)
+    fetch(`https://thawing-plains-66619.herokuapp.com/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -24,7 +24,7 @@ const PlaceOrder = () => {
   const onSubmit = (data) => {
     data.status = "pending";
     console.log(data);
-    fetch("http://localhost:5000/confirmOrder", {
+    fetch("https://thawing-plains-66619.herokuapp.com/confirmOrder", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

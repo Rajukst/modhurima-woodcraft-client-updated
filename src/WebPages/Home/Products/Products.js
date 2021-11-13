@@ -5,7 +5,7 @@ import Explore from "./Explore";
 const Products = () => {
   const [explore, setExplore] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/explore-products")
+    fetch("https://thawing-plains-66619.herokuapp.com/explore-products")
       .then((res) => res.json())
       .then((data) => setExplore(data));
   }, []);
