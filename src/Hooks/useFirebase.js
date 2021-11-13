@@ -31,16 +31,17 @@ const useFirebase = () => {
       .finally(() => setLoading(false));
   };
   // sign in method
-  const signInUser = (email, password) => {
+  const signInUser = (email, password, location, history) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        // ...
+        const destination = location?.state?.from || "/";
+        history.replace(destination);
+        setError("");
       })
       .catch((error) => {
         setError(error.message);
-      });
+      })
+      .finally(() => setLoading(false));
   };
   const logOut = () => {
     setLoading(true);

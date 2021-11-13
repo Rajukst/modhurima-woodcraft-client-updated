@@ -10,6 +10,7 @@ import DashBoard from "./WebPages/DashBoard/DashBoard";
 import Login from "./WebPages/User-Empliment/Login/Login";
 import Registration from "./WebPages/User-Empliment/Registration/Registration";
 import AuthProvider from "./Context/AuthProvider";
+import PrivateRoute from "./WebPages/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -33,12 +34,13 @@ function App() {
             <Route path="/products">
               <Products></Products>
             </Route>
-            <Route path="/place-order">
+            <PrivateRoute path="/place-order/:serviceId">
               <PlaceOrder></PlaceOrder>
-            </Route>
-            <Route path="/dashboard">
+            </PrivateRoute>
+
+            <PrivateRoute path="/dashboard">
               <DashBoard></DashBoard>
-            </Route>
+            </PrivateRoute>
           </Switch>
           <Footer />
         </Router>

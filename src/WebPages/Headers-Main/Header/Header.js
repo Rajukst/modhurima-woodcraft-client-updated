@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 
@@ -9,10 +9,7 @@ const Header = () => {
   return (
     <>
       <Navbar bg="dark" expand="lg">
-        <Container className="m-4" fluid>
-          <Navbar.Brand className="text-light" href="#">
-            Modhurima WoodCraft Corner
-          </Navbar.Brand>
+        <Container>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -29,6 +26,9 @@ const Header = () => {
               <Link className="class-link" to="/dashboard">
                 DashBoard
               </Link>
+            </Nav>
+            <Form className="d-flex">
+              <div className="me-2 text-light">Logged As: {user.email}</div>
               {user.email ? (
                 <Button onClick={logOut}>LogOut</Button>
               ) : (
@@ -36,8 +36,7 @@ const Header = () => {
                   Login
                 </Link>
               )}
-              <div className="me-2 text-light">Logged As: {user.email}</div>
-            </Nav>
+            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>

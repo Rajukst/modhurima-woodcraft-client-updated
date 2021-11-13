@@ -2,8 +2,8 @@ import React from "react";
 import { Card, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const HomeProducts = ({ service }) => {
-  const { name, image, description, price } = service;
+const HomeProducts = ({ products }) => {
+  const { _id, name, image, description, price } = products;
   return (
     <div>
       <Col>
@@ -13,7 +13,7 @@ const HomeProducts = ({ service }) => {
             <Card.Title>{name}</Card.Title>
             <Card.Title>{price}</Card.Title>
             <Card.Text>{description}</Card.Text>
-            <Link to="/place-order">
+            <Link to={`/place-order/${_id}`}>
               <Button variant="outline-dark">Purchase Now</Button>
             </Link>
           </Card.Body>

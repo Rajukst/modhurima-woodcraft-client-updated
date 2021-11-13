@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
+
 import Drawer from "@mui/material/Drawer";
 
 import Toolbar from "@mui/material/Toolbar";
@@ -12,12 +12,13 @@ import { Button } from "@mui/material";
 import PayLink from "./DashBoard-Empliment/Pay-Link/PayLink";
 import MyOrders from "./DashBoard-Empliment/My-Orders/MyOrders";
 import Review from "./DashBoard-Empliment/Review/Review";
-import LogOut from "./DashBoard-Empliment/LogOut/LogOut";
 import AddProduct from "./Admin/AddProduct/AddProduct";
 import ManageAllOrders from "./Admin/Manage-All-Orders/ManageAllOrders";
 import "./DashBoard.css";
+import useAuth from "../../Hooks/useAuth";
 const drawerWidth = 240;
 const DashBoard = (props) => {
+  const { user, logOut } = useAuth();
   const { window } = props;
   let { path, url } = useRouteMatch();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -42,7 +43,7 @@ const DashBoard = (props) => {
           <Button color="inherit">Make Payment</Button>
         </Link>
         <Link className="remove" to={`${url}/makeAdmin`}>
-          <Button color="inherit">Make Me Admin</Button>
+          <Button color="inherit">Make A Admin</Button>
         </Link>
         <Link className="remove" to={`${url}/manageProducts`}>
           <Button color="inherit">Manage Products</Button>
@@ -53,9 +54,13 @@ const DashBoard = (props) => {
         <Link className="remove" to={`${url}/manage-orders`}>
           <Button color="inherit">Manage All Orders</Button>
         </Link>
-        <Link className="remove" to={`${url}/log-out`}>
-          <Button color="inherit">Log Out</Button>
-        </Link>
+        {user.email ? (
+          <Button onClick={logOut}>LogOut</Button>
+        ) : (
+          <Link className="class-link" to="/login">
+            Login
+          </Link>
+        )}
       </Box>
     </div>
   );
@@ -135,9 +140,6 @@ const DashBoard = (props) => {
             </Route>
             <Route path={`${path}/manage-orders`}>
               <ManageAllOrders></ManageAllOrders>
-            </Route>
-            <Route path={`${path}/log-out`}>
-              <LogOut></LogOut>
             </Route>
           </Switch>
         </Box>

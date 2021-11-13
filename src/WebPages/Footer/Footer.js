@@ -3,7 +3,9 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <h1>This is footer</h1>
+      <div className="footer text-center">
+        <p>CopyRight &copy; 2021. Modhurima WoodCraft Corner</p>
+      </div>
     </div>
   );
 };

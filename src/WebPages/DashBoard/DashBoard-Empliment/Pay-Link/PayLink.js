@@ -3,7 +3,7 @@ import React from "react";
 const PayLink = () => {
   return (
     <div>
-      <h1>This Is Pay Link Page</h1>
+      <h1>Payment Option Is Comming Soon</h1>
     </div>
   );
 };

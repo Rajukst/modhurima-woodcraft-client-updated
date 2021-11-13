@@ -1,14 +1,16 @@
 import { Grid, TextField, CircularProgress, Alert } from "@mui/material";
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import loginImage from "../../../images/login.png";
 const Login = () => {
   const [loginUser, setLoginUser] = useState({});
   const { user, signInUser, loading, error } = useAuth();
+  const location = useLocation();
+  const history = useHistory();
   const loginSubmit = (e) => {
-    signInUser(loginUser.email, loginUser.password);
+    signInUser(loginUser.email, loginUser.password, location, history);
     e.preventDefault();
   };
   const loginOnChange = (e) => {

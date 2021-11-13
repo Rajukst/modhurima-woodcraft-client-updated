@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
+
 import TopBanner from "../../Headers-Main/Top-Banner/TopBanner";
 import HomeProducts from "../Home-Products/HomeProducts";
+import Opinion from "../Opinion/Opinion";
 
 const MainHome = () => {
-  const [products, setProducts] = useState([]);
+  const [homeData, setHomeData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/home-product")
+    fetch("http://localhost:5000/explore-products")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setHomeData(data));
   }, []);
   return (
     <div>
       <TopBanner></TopBanner>
       <Row xs={1} md={2} lg={3} className="g-4 m-2">
-        {products.slice(0, 6).map((getProducts) => (
+        {homeData.slice(0, 6).map((getProduct) => (
           <HomeProducts
-            key={getProducts._id}
-            service={getProducts}
+            key={getProduct._id}
+            products={getProduct}
           ></HomeProducts>
         ))}
+        <Opinion></Opinion>
       </Row>
     </div>
   );

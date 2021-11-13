@@ -13,7 +13,7 @@ const Products = () => {
     <div>
       <h1>This is Products Page</h1>
       <Row xs={1} md={2} lg={3} className="g-4 m-2">
-        {explore.slice(6, 25).map((getExploreProducts) => (
+        {explore.slice(6, 30).map((getExploreProducts) => (
           <Explore
             key={getExploreProducts._id}
             exploreProducts={getExploreProducts}
