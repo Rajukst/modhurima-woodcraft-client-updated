@@ -12,7 +12,7 @@ const PlaceOrder = () => {
   useEffect(() => {
     fetch(`https://thawing-plains-66619.herokuapp.com/${serviceId}`)
       .then((res) => res.json())
-      .then((data) => setProduct(data));
+      .then((data) => console.log(data));
   }, []);
   const {
     register,
