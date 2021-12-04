@@ -14,7 +14,9 @@ const MyOrders = () => {
   const { user } = useAuth();
   const [order, setOrder] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/myOrder?email=${user.email}`)
+    fetch(
+      `https://thawing-plains-66619.herokuapp.com/myOrder?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, []);
@@ -27,6 +29,7 @@ const MyOrders = () => {
           <TableHead>
             <TableRow>
               <TableCell>Order Id</TableCell>
+
               <TableCell align="right">Order Name</TableCell>
               <TableCell align="right">Order Price</TableCell>
               <TableCell align="right">Status</TableCell>
@@ -41,6 +44,7 @@ const MyOrders = () => {
                 <TableCell component="th" scope="row">
                   {row._id}
                 </TableCell>
+
                 <TableCell align="right">{row.name}</TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="right">Pending</TableCell>

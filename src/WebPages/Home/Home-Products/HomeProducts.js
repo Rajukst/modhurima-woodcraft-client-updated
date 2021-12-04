@@ -13,6 +13,7 @@ const HomeProducts = ({ products }) => {
             <Card.Title>{name}</Card.Title>
             <Card.Title>{price}</Card.Title>
             <Card.Text>{description}</Card.Text>
+            <Card.Text>User Review</Card.Text>
             <Link to={`/place-order/${_id}`}>
               <Button variant="outline-dark">Purchase Now</Button>
             </Link>

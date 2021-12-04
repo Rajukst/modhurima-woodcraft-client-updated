@@ -10,14 +10,14 @@ const PlaceOrder = () => {
   const { user } = useAuth();
   const { serviceId } = useParams();
   useEffect(() => {
-    fetch(`https://thawing-plains-66619.herokuapp.com/${serviceId}`)
+    fetch(`https://thawing-plains-66619.herokuapp.com/place-order/${serviceId}`)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setProduct(data));
   }, []);
   const {
     register,
     handleSubmit,
-    watch,
+
     formState: { errors },
   } = useForm();
 

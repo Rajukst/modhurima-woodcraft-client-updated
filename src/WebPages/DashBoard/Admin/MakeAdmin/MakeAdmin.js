@@ -9,7 +9,7 @@ const MakeAdmin = () => {
     const user = { email };
     alert("clicked");
     e.preventDefault();
-    fetch("http://localhost:5000/myOrder/admin", {
+    fetch("https://thawing-plains-66619.herokuapp.com/myOrder/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
